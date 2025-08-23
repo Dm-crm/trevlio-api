@@ -1,11 +1,10 @@
 import express from "express";
+import router from "./routes/index.js";
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Hello, World!");
-});
+app.use(express.json());
 
-app.listen(3000, () => {
-  console.log("Server is running on http://localhost:3000");
-});
+app.use("/api/v1", router);
+
+app.listen(3000, () => console.log(`Server is listening on PORT 3000`));
