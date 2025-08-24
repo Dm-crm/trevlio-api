@@ -36,11 +36,19 @@ export const login = async (req, res) => {
   if (!isPasswordValid)
     return res.status(400).json({ error: "Invalid credentials!" });
 
-  const { accessToken } = generateTokens(user);
+  const { accessToken, refreshToken } = generateTokens(user);
+
+  await prisma.userRefreshTokens.create({
+    data: {
+      refreshToken,
+      userId: user.id,
+    },
+  });
 
   return res.status(200).json({
     id: user.id,
-    name: user.username,
-    accessToken
+    name: user.name,
+    accessToken,
+    refreshToken,
   });
 };
