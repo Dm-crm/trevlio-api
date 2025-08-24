@@ -9,9 +9,9 @@ export const generateTokens = (user) => {
     expiresIn: "30m",
   });
 
-//   const refreshToken = jwt.sign({ userId: user.id }, JWT_REFRESH_SECRET, {
-//     expiresIn: "1h",
-//   });
+  const refreshToken = jwt.sign({ userId: user.id }, JWT_REFRESH_SECRET, {
+    expiresIn: "1h",
+  });
 
-  return { accessToken };
+  return { accessToken, refreshToken };
 };
