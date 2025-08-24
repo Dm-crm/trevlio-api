@@ -5,8 +5,9 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test": "",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build": "prisma generate",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
