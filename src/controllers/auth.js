@@ -25,6 +25,7 @@ export const signUp = async (req, res) => {
 
 export const login = async (req, res) => {
   const { error, value } = loginUser.validate(req.body);
+  if (error) return res.status(400).json({ error: error.details[0].message });
 
   let user = await prisma.user.findFirst({ where: { email: value.email } });
 
