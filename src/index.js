@@ -13,4 +13,8 @@ app.use(cors());
 
 app.use("/api/v1", router);
 
+app.get("/", (req, res) => {
+  res.send("Welcome to Trevlio API"); 
+});
+
 app.listen(PORT, () => console.log(`Server is listening on PORT ${PORT}`));
